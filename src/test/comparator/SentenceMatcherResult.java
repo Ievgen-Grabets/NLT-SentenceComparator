@@ -1,17 +1,17 @@
 package test.comparator;
 
 import test.entity.Sentence;
-import test.entity.Word;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
+
 
 public class SentenceMatcherResult {
 
 	private final Sentence sentenceA;
 	private final Sentence sentenceB;
-	private final Set<Word> difference;
+	private final List<String> difference;
 
-	public SentenceMatcherResult(Sentence sentenceA, Sentence sentenceB, Set<Word> difference) {
+	public SentenceMatcherResult(Sentence sentenceA, Sentence sentenceB, List<String> difference) {
 		this.sentenceA = sentenceA;
 		this.sentenceB = sentenceB;
 		this.difference = difference;
@@ -25,7 +25,7 @@ public class SentenceMatcherResult {
 		return sentenceB;
 	}
 
-	public Set<Word> getDifference() {
+	public List<String> getDifference() {
 		return difference;
 	}
 
@@ -34,7 +34,6 @@ public class SentenceMatcherResult {
 		return sentenceA + "\n"
 				+ sentenceB + "\nThe changing word was: "
 				+ difference.stream()
-				.map(Word::getWord)
 				.collect(Collectors.joining(", "));
 	}
 
